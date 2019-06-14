@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     @objc func startTimerColor() {
         if colorTimer == nil {
             
-        colorTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(refreshColor), userInfo: nil, repeats: true)
+        colorTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(refreshColor), userInfo: nil, repeats: true)
         }
     }
     
