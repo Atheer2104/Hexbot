@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var colors = [Color]()
+    var fetchColors = FetchColors()
     var defaultCount = 1
     var count = 1
     var colorTimer: Timer!
@@ -36,16 +36,16 @@ class ViewController: UIViewController {
         
         navigationItem.leftBarButtonItems = [refreshButton, startTimerButton, stopTimerButton]
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Fetch new colors", style: .plain, target: self, action: #selector(setupAlert))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Fetch new colors", style: .plain, target: self, action: #selector(setupAlertAndFetchColorsInBackground))
         
-        setupAlert()
+        setupAlertAndFetchColorsInBackground()
         
     }
     
     @objc func startTimerColor() {
         if colorTimer == nil {
             
-        colorTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(refreshColor), userInfo: nil, repeats: true)
+            colorTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(refreshColor), userInfo: nil, repeats: true)
         }
     }
     
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func setupAlert() {
+    @objc func setupAlertAndFetchColorsInBackground() {
         let ac = UIAlertController(title: "Count", message: "How many colors would you like to fetch", preferredStyle: .alert)
         ac.addTextField()
         
@@ -67,55 +67,36 @@ class ViewController: UIViewController {
             let answerInt = Int(answer) ?? self?.defaultCount
             self?.count = answerInt!
             
-            // fetching data from background
-            self?.performSelector(inBackground: #selector(self?.fetchJson), with: nil)
-        }
+            self?.fetchColorsInBackground(count: self!.count)
+            }
         
         ac.addAction(submitAction)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     
-    @objc func fetchJson() {
-        let urlString = "https://api.noopschallenge.com/hexbot?count=\(count)"
-        
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-            }
-        }
-    }
-
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
-        
-        if let jsonColors = try? decoder.decode(Colors.self, from: json) {
-            colors = jsonColors.colors
-            
-            // change ui on main thread
-            performSelector(onMainThread: #selector(setupView), with: nil, waitUntilDone: false)
-            
-        }
-    }
-    
-    @objc func setupView() {
-        guard let hex = colors.first?.value else { return }
-        hexValue = hex
-        let color = UIColor(hex: hex)
-        
-        UIView.animate(withDuration: 1) {
-            self.ColorView.backgroundColor = color
-        }
-        
-    }
-    
     @objc func refreshColor() {
-        colors.shuffle()
-        guard let newColor = colors.first?.value else { return }
-       
-        hexValue = newColor
-        UIView.animate(withDuration: 1) {
-            self.ColorView.backgroundColor = UIColor(hex: newColor)
+        fetchColors.colors.shuffle()
+        assignColor()
+    }
+    
+    func assignColor() {
+        guard let newColor = fetchColors.colors.first?.value else { return }
+              
+       hexValue = newColor
+       UIView.animate(withDuration: 1) {
+           self.ColorView.backgroundColor = UIColor(hex: newColor)
+       }
+    }
+    
+    func fetchColorsInBackground(count: Int) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                self.fetchColors.fetchJson(count: count)
+            }
+            DispatchQueue.main.async {
+                self.assignColor()
+            }
         }
     }
 

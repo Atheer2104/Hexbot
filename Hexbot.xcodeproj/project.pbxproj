@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1A6823246DBAD800C1E571 /* FetchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1A6822246DBAD800C1E571 /* FetchColors.swift */; };
 		FF81DAF922B2EB6E0007BABD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DAF822B2EB6E0007BABD /* AppDelegate.swift */; };
 		FF81DAFB22B2EB6E0007BABD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DAFA22B2EB6E0007BABD /* ViewController.swift */; };
 		FF81DAFE22B2EB6E0007BABD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF81DAFC22B2EB6E0007BABD /* Main.storyboard */; };
 		FF81DB0022B2EB6F0007BABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF81DAFF22B2EB6F0007BABD /* Assets.xcassets */; };
 		FF81DB0322B2EB700007BABD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF81DB0122B2EB700007BABD /* LaunchScreen.storyboard */; };
-		FF81DB0B22B2EBF50007BABD /* FetchColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DB0A22B2EBF50007BABD /* FetchColors.swift */; };
-		FF81DB0D22B2EC4D0007BABD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DB0C22B2EC4D0007BABD /* Color.swift */; };
-		FF81DB0F22B2F0E40007BABD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DB0E22B2F0E40007BABD /* Extensions.swift */; };
+		FF81DB0B22B2EBF50007BABD /* ColorJsonStructer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DB0A22B2EBF50007BABD /* ColorJsonStructer.swift */; };
+		FF81DB0F22B2F0E40007BABD /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF81DB0E22B2F0E40007BABD /* UIColorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF1A6822246DBAD800C1E571 /* FetchColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchColors.swift; sourceTree = "<group>"; };
 		FF81DAF522B2EB6E0007BABD /* Hexbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hexbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF81DAF822B2EB6E0007BABD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF81DAFA22B2EB6E0007BABD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,9 +26,8 @@
 		FF81DAFF22B2EB6F0007BABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF81DB0222B2EB700007BABD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF81DB0422B2EB700007BABD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF81DB0A22B2EBF50007BABD /* FetchColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchColors.swift; sourceTree = "<group>"; };
-		FF81DB0C22B2EC4D0007BABD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		FF81DB0E22B2F0E40007BABD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FF81DB0A22B2EBF50007BABD /* ColorJsonStructer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorJsonStructer.swift; sourceTree = "<group>"; };
+		FF81DB0E22B2F0E40007BABD /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +62,9 @@
 			children = (
 				FF81DAF822B2EB6E0007BABD /* AppDelegate.swift */,
 				FF81DAFA22B2EB6E0007BABD /* ViewController.swift */,
-				FF81DB0E22B2F0E40007BABD /* Extensions.swift */,
-				FF81DB0A22B2EBF50007BABD /* FetchColors.swift */,
-				FF81DB0C22B2EC4D0007BABD /* Color.swift */,
+				FF1A6822246DBAD800C1E571 /* FetchColors.swift */,
+				FF81DB0E22B2F0E40007BABD /* UIColorExtensions.swift */,
+				FF81DB0A22B2EBF50007BABD /* ColorJsonStructer.swift */,
 				FF81DAFC22B2EB6E0007BABD /* Main.storyboard */,
 				FF81DAFF22B2EB6F0007BABD /* Assets.xcassets */,
 				FF81DB0122B2EB700007BABD /* LaunchScreen.storyboard */,
@@ -144,10 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF81DB0F22B2F0E40007BABD /* Extensions.swift in Sources */,
+				FF1A6823246DBAD800C1E571 /* FetchColors.swift in Sources */,
+				FF81DB0F22B2F0E40007BABD /* UIColorExtensions.swift in Sources */,
 				FF81DAFB22B2EB6E0007BABD /* ViewController.swift in Sources */,
-				FF81DB0D22B2EC4D0007BABD /* Color.swift in Sources */,
-				FF81DB0B22B2EBF50007BABD /* FetchColors.swift in Sources */,
+				FF81DB0B22B2EBF50007BABD /* ColorJsonStructer.swift in Sources */,
 				FF81DAF922B2EB6E0007BABD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

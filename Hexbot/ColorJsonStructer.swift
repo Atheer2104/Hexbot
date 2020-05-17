@@ -1,5 +1,5 @@
 //
-//  Color.swift
+//  FetchColor.swift
 //  Hexbot
 //
 //  Created by Atheer on 2019-06-13.
@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct Colors: Codable {
+    var colors: [Color]
+}
+
 struct Color: Codable {
     var value: String
 }
+
